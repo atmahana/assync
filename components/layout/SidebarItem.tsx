@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useTransition } from "react";
 import { IconType } from "react-icons";
 import { useRouter } from "next/router";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import useLoginModal from "@/hooks/modals/useLoginModal";
 import useCurrentUser from "@/hooks/useCurrentUser";
@@ -28,6 +28,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 }) => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const [_, startTransition] = useTransition();
 
   const pathname = usePathname();
   const isActive = pathname === href;
@@ -42,7 +43,9 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     if (auth && !currentUser) {
       loginModal.onOpen();
     } else if (href) {
-      router.push(href);
+      startTransition(() => {
+        router.push(href);
+      });
     }
   }, [router, href, auth, loginModal, onClick, currentUser]);
 
