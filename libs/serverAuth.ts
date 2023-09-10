@@ -15,6 +15,9 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
     where: {
       email: session.user.email,
     },
+    select: {
+      id: true,
+    }
   });
 
   if (!currentUser) {

@@ -26,10 +26,24 @@ export default async function handler(
           id: postId,
         },
         include: {
-          user: true,
+          user: {
+            select: {
+              id: true,
+              name: true,
+              username: true,
+              profileImage: true,
+            }
+          },
           comments: {
             include: {
-              user: true,
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                  username: true,
+                  profileImage: true,
+                }
+              },
             },
             orderBy: {
               createdAt: "desc",

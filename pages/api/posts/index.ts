@@ -39,7 +39,14 @@ export default async function handler(
             userId,
           },
           include: {
-            user: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                profileImage: true,
+              }
+            },
             comments: true,
           },
           orderBy: {
@@ -49,7 +56,14 @@ export default async function handler(
       } else {
         posts = await prisma.post.findMany({
           include: {
-            user: true,
+            user: {
+              select: {
+                id: true,
+                name: true,
+                username: true,
+                profileImage: true,
+              }
+            },
             comments: true,
           },
           orderBy: {

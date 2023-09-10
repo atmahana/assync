@@ -15,6 +15,12 @@ export default async function handler(
       orderBy: {
         createdAt: "desc",
       },
+      select: {
+        id: true,
+        username: true,
+        name: true,
+      },
+      take: 5
     });
 
     return res.status(200).json(users);
