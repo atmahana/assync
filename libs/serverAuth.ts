@@ -17,6 +17,7 @@ const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
     },
     select: {
       id: true,
+      username: true,
     }
   });
 
