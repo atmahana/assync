@@ -27,7 +27,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
   const goToUser = useCallback(
     (ev: any) => {
       ev.stopPropagation();
-      router.push(`/users/${data.user.id}`);
+      router.push(`/${data.user.username}`);
     },
     [router, data.user.id],
   );
@@ -76,7 +76,7 @@ const PostItem: React.FC<PostItemProps> = ({ data = {}, userId }) => {
       className="sm:mx-0 p-5 my-5 transition border rounded-lg shadow-sm cursor-pointer bg-primary border-border hover:bg-foreground/5"
     >
       <div className="flex flex-row items-start gap-3">
-        <Avatar userId={data.user.id} />
+        <Avatar id={data.user.username}/>
         <div className="w-full space-y-2">
           <div className="flex flex-row justify-between">
             <div className="inline-flex gap-2">

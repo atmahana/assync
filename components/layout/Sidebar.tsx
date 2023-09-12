@@ -30,7 +30,7 @@ const Sidebar = () => {
       icon: BiUser,
       activeIcon: BiSolidUser,
       label: "Profile",
-      href: `/users/${currentUser?.id}`,
+      href: `/${currentUser?.username}`,
       auth: true,
     },
   ];

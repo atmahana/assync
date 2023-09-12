@@ -11,35 +11,37 @@ export default async function handler(
   }
 
   try {
-    const { userId } = req.query;
+    const username = req.query["id"];
 
-    if (!userId || typeof userId !== "string") {
-      throw new Error("Invalid ID");
+    if (!username || typeof username !== "string") {
+      throw new Error("Invalid Username");
     }
 
     const existingUser = await prisma.user.findUnique({
       where: {
-        id: userId,
+        username: username,
       },
       select: {
         id: true,
         name: true,
         username: true,
-        followingIds: true,
-        profileImage: true,
         coverImage: true,
+        createdAt: true,
+        followingIds: true,
+        hasNotification: true,
+        profileImage: true,
       }
     });
 
-    const followersCount = await prisma.user.count({
-      where: {
-        followingIds: {
-          has: userId,
-        },
-      },
-    });
+    // const followersCount = await prisma.user.count({
+    //   where: {
+    //     followingIds: {
+    //       has: username,
+    //     },
+    //   },
+    // });
 
-    return res.status(200).json({ ...existingUser, followersCount });
+    return res.status(200).json({ ...existingUser });
   } catch (error) {
     return res.status(400).end();
   }

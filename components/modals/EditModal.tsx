@@ -4,15 +4,15 @@ import { toast } from "react-hot-toast";
 
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useEditModal from "@/hooks/modals/useEditModal";
-import useUser from "@/hooks/useUser";
 
 import Input from "../Input";
 import Modal from "../Modal";
 import ImageUpload from "../ImageUpload";
+import useUser from "@/hooks/useUser";
 
 const EditModal = () => {
   const { data: currentUser } = useCurrentUser();
-  const { mutate: mutateFetchedUser } = useUser(currentUser?.id);
+  const { mutate: mutateFetchedUser } = useUser(currentUser?.username as string);
   const editModal = useEditModal();
 
   const [profileImage, setProfileImage] = useState("");

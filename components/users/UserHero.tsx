@@ -5,11 +5,11 @@ import useUser from "@/hooks/useUser";
 import Avatar from "../Avatar";
 
 interface UserHeroProps {
-  userId: string;
+  id: string;
 }
 
-const UserHero: React.FC<UserHeroProps> = ({ userId }) => {
-  const { data: fetchedUser } = useUser(userId);
+const UserHero: React.FC<UserHeroProps> = ({ id }) => {
+  const { data: fetchedUser } = useUser(id);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const UserHero: React.FC<UserHeroProps> = ({ userId }) => {
           />
         )}
         <div className="absolute -bottom-16 left-4">
-          <Avatar userId={userId} isLarge hasBorder />
+          <Avatar id={id} isLarge hasBorder />
         </div>
       </div>
     </div>

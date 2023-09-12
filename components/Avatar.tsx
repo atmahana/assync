@@ -5,25 +5,26 @@ import { useCallback } from "react";
 import useUser from "@/hooks/useUser";
 
 interface AvatarProps {
-  userId: string;
+  id: string;
   isLarge?: boolean;
   hasBorder?: boolean;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
+const Avatar: React.FC<AvatarProps> = ({ id, isLarge, hasBorder }) => {
   const router = useRouter();
 
-  const { data: fetchedUser } = useUser(userId);
+  const { data: fetchedUser } = useUser(id);
 
   const onClick = useCallback(
     (event: any) => {
       event.stopPropagation();
 
-      const url = `/users/${userId}`;
-
-      router.push(url);
+      router.push({
+        pathname: "/[userId]",
+        query: { userId: id },
+      });
     },
-    [router, userId],
+    [router, id],
   );
 
   return (
@@ -42,7 +43,7 @@ const Avatar: React.FC<AvatarProps> = ({ userId, isLarge, hasBorder }) => {
     >
       <Image
         fill
-        sizes='20'
+        sizes="20"
         style={{
           objectFit: "cover",
           borderRadius: "100%",

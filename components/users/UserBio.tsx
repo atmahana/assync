@@ -11,16 +11,16 @@ import useEditModal from "@/hooks/modals/useEditModal";
 import Button from "../Button";
 
 interface UserBioProps {
-  userId: string;
+  id: string;
 }
 
-const UserBio: React.FC<UserBioProps> = ({ userId }) => {
+const UserBio: React.FC<UserBioProps> = ({ id }) => {
   const { data: currentUser } = useCurrentUser();
-  const { data: fetchedUser } = useUser(userId);
+  const { data: fetchedUser } = useUser(id);
 
   const editModal = useEditModal();
 
-  const { isFollowing, toggleFollow } = useFollow(userId);
+  // const { isFollowing, toggleFollow } = useFollow(userId);
 
   const createdAt = useMemo(() => {
     if (!fetchedUser?.createdAt) {
@@ -33,16 +33,17 @@ const UserBio: React.FC<UserBioProps> = ({ userId }) => {
   return (
     <div className="sm:border-b sm:border-x bg-primary border-border">
       <div className="flex justify-end p-5">
-        {currentUser?.id === userId ? (
+        {currentUser?.username === id ? (
           <FiEdit2 size={20} onClick={editModal.onOpen} />
         ) : (
           // <Button secondary label="Edit" onClick={editModal.onOpen} />
-          <Button
-            onClick={toggleFollow}
-            label={isFollowing ? "Unfollow" : "Follow"}
-            secondary={!isFollowing}
-            outline={isFollowing}
-          />
+          // <Button
+          //   onClick={toggleFollow}
+          //   label={isFollowing ? "Unfollow" : "Follow"}
+          //   secondary={!isFollowing}
+          //   outline={isFollowing}
+          // />
+          <div/>
         )}
       </div>
       <div className="p-5">

@@ -31,7 +31,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ data = {} }) => {
   return (
     <div className="p-2.5 sm:p-5 transition rounded-md cursor-pointer hover:bg-foreground/5">
       <div className="flex flex-row items-start gap-5">
-        <Avatar userId={data.user.id} />
+        <Avatar id={data.user.username}/>
         <div className="w-full">
           <div className="flex flex-row justify-between">
             <div className="inline-flex gap-2">
