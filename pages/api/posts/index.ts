@@ -28,11 +28,10 @@ export default async function handler(
 
     if (req.method === "GET") {
       const { userId } = req.query;
-
-      console.log({ userId });
-
+      
       let posts;
-
+      
+      // retrieve all posts belongs to a user
       if (userId && typeof userId === "string") {
         posts = await prisma.post.findMany({
           where: {
@@ -53,7 +52,10 @@ export default async function handler(
             createdAt: "desc",
           },
         });
-      } else {
+      } 
+
+      // retrieve all posts
+      else {
         posts = await prisma.post.findMany({
           include: {
             user: {
@@ -71,7 +73,6 @@ export default async function handler(
           },
         });
       }
-
       return res.status(200).json(posts);
     }
   } catch (error) {
