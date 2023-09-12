@@ -1,14 +1,16 @@
 import PostFeed from "@/components/posts/PostFeed";
 import Header from "@/components/Header";
-import Form from "@/components/Form";
+import { PostForm } from "@/components/Forms";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>Home / assync</title>
+      </Head>
       <Header label="Home" />
-      <div className="my-5 mx-3 sm:mx-0 border rounded-lg shadow-sm bg-primary border-border">
-        <Form placeholder="Share something..." />
-      </div>
+      <PostForm />
       <PostFeed />
     </>
   );
