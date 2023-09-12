@@ -7,7 +7,7 @@ interface SkeletonProps {
 
 const Skeleton: React.FC<SkeletonProps> = ({ isSmall, length }) => {
   return (
-    <div className="h-auto space-y-5 pt-5 sm:pt-0">
+    <div className="h-auto space-y-5 pt-5 sm:pt-0 mt-5">
       {[...Array(length)].map((_, index) => (
         <div
           key={index}
