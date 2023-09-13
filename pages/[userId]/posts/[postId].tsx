@@ -26,7 +26,7 @@ const PostView = () => {
   return (
     <>
       <Head>
-        <title></title>
+        <title>{fetchedPost.user.name}: "{fetchedPost.body}" / assync</title>
       </Head>
       <Header showBackArrow label="Post" />
       <div className="mx-3 sm:mx-0">
