@@ -15,7 +15,7 @@ interface FormProps {
   postId?: string;
 }
 
-const PostForm: React.FC<FormProps> = () => {
+const CreatePostForm: React.FC<FormProps> = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -77,7 +77,7 @@ const PostForm: React.FC<FormProps> = () => {
   );
 };
 
-const CommentForm: React.FC<FormProps> = ({
+const CreateCommentForm: React.FC<FormProps> = ({
   postId,
 }) => {
   const registerModal = useRegisterModal();
@@ -145,4 +145,4 @@ const CommentForm: React.FC<FormProps> = ({
   );
 };
 
-export { PostForm, CommentForm };
+export { CreatePostForm, CreateCommentForm };
