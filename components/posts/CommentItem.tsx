@@ -15,7 +15,7 @@ const CommentItem: React.FC<CommentItemProps> = ({ data = {} }) => {
     (ev: any) => {
       ev.stopPropagation();
 
-      router.push(`/users/${data.user.id}`);
+      router.push(`/${data.user.username}`);
     },
     [router, data.user.id],
   );
